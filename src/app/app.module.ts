@@ -11,7 +11,7 @@ import { ChecklistPage } from '../pages/checklist/checklist';
 //import { SummaryPage } from '../pages/summary/summary';
 
 
-import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireDatabaseModule, Observable } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 //import { FirebaseProvider } from '../providers/firebase/firebase';
 
@@ -36,12 +36,12 @@ import { AngularFireModule } from 'angularfire2';
     IonicModule.forRoot(MyApp),
     HttpModule,
     AngularFireModule.initializeApp({
-      apiKey: "AIzaSyBRVDn_sqHocknO4nSF2Pfy6VDjnOvGn3s",
-      authDomain: "checklist-01.firebaseapp.com",
-      databaseURL: "https://checklist-01.firebaseio.com",
-      projectId: "checklist-01",
-      storageBucket: "checklist-01.appspot.com",
-      messagingSenderId: "887356109663"
+      apiKey: "AIzaSyCr6A3Z5mUvPB-ffIdbpx1l3zDyJPInFfI",
+      authDomain: "headcount-checklist.firebaseapp.com",
+      databaseURL: "https://headcount-checklist.firebaseio.com",
+      projectId: "headcount-checklist",
+      storageBucket: "headcount-checklist.appspot.com",
+      messagingSenderId: "197178357914"
     }),
     AngularFireDatabaseModule
   ],

@@ -48,7 +48,10 @@ export class ChecklistPage {
      });
   }
 
-
+  // isPresent(){
+  //   this.staffPresent = true;
+  //
+  // }
 
   addRecord()
   {

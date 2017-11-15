@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { IonicPage, NavController, ViewController, NavParams } from 'ionic-angular';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { Observable } from 'angularfire2/database/observable';
+import { AngularFireDatabase, Observable } from 'angularfire2/database';
+//import { Observable } from 'angularfire2/database/observable';
+import 'rxjs/add/operator/map';
 
 /**
  * Generated class for the ModalsPage page.
@@ -21,10 +22,10 @@ export class ModalsPage {
 public form          : any;
 public staffs        : Observable<any[]>;
 public staffName     : any     = '';
-public staffDept   : any     = [];
-public staffTelno : any     = '';
-public staffPresent   : any     = [];
-public staffRemark     : any     = '';
+//public staffDept     : any     = [];
+//public staffTelno    : any     = '';
+public staffPresent  : boolean = false;
+public staffRemark   : any     = '';
 public staffId       : string  = '';
 public isEditable    : boolean = false;
 
@@ -39,11 +40,11 @@ constructor(
 
 {
    this.form 	    = _FB.group({
-      'telno' 	    : ['', Validators.minLength(10)],
+      //'telno' 	    : ['', Validators.minLength(10)],
       'remark' 	    : ['', Validators.maxLength(100)],
       'name'         : ['', Validators.required],
-      'dept'	    : ['', Validators.required],
-      'present'	    : ['', Validators.required]
+      //'dept'	    : ['', Validators.required],
+      'present'	    : ['']
    });
 
    this.staffs = this._FIRE.list('/staffs');
@@ -55,8 +56,8 @@ constructor(
            k;
 
        this.staffName      = staff.name;
-       this.staffDept	     = staff.dept;
-       this.staffTelno     = staff.telno;
+       //this.staffDept	     = staff.dept;
+       //this.staffTelno     = staff.telno;
        this.staffPresent   = staff.present;
        this.staffRemark    = staff.remark;
        this.staffId        = staff.$key;
@@ -83,48 +84,48 @@ saveStaff(val)
 {
    let name	    : string	= this.form.controls["name"].value,
        remark   : string 	= this.form.controls["remark"].value,
-       telno    : number	= this.form.controls["telno"].value,
-       dept    : any       = this.form.controls["dept"].value,
-       present    : any	    = this.form.controls["present"].value,
-       departments     : any       = [],
-       presence    : any       = [],
-       k         : any;
+       //telno    : number	= this.form.controls["telno"].value,
+       //dept    : any       = this.form.controls["dept"].value,
+       present    : boolean	    = this.form.controls["present"].value,
+       // departments     : any       = [],
+       //presence    : any       = [],
+       // k         : any;
 
 
- for(k in dept)
- {
-    departments.push({
-       "name" : dept[k]
-    });
- }
-
-
- for(k in present)
- {
-    presence.push({
-       "name" : present[k]
-    });
- }
+ // for(k in dept)
+ // {
+ //    departments.push({
+ //       "name" : dept[k]
+ //    });
+ // }
+ //
+ //
+ // for(k in present)
+ // {
+ //    presence.push({
+ //       "name" : present[k]
+ //    });
+ // }
 
 
 if(this.isEditable)
 {
    this.staffs.update(this.staffId, {
       name    : name,
-      telno   : telno,
+      //telno   : telno,
       remark  : remark,
-      dept    : departments,
-      present : presence
+      //dept    : departments,
+      present : present
    });
 }
 else
 {
    this.staffs.push({
      name    : name,
-     telno   : telno,
+     //telno   : telno,
      remark  : remark,
-     dept    : departments,
-     present : presence
+     //dept    : departments,
+     present : present
    });
 }
 

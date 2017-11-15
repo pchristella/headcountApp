@@ -68,10 +68,12 @@
       <ion-card
         *ngFor="let staff of staffs | async">
         <ion-item>
-           <h2>{{ staff.name }}</h2>
-           <small>{{ staff.dept }} | {{ staff.telno }}</small>
-           <small> {{ staff.present }}</small>
-           <p>{{ staff.remark }}</p>
+          <ion-checkbox [(ngModel)]="staff.present" (ionChange)="isPresent(staff)"></ion-checkbox>
+          <ion-label>{{ staff.name }}</ion-label>
+          <ion-label>{{ staff.remark }}</ion-label>
+           <!-- <h2>{{ staff.name }}</h2> -->
+           <!-- <small> {{ staff.present }}</small>
+           <p>{{ staff.remark }}</p> -->
            </ion-item>
 
            <div class="manage-record" padding>

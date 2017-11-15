@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ChecklistPage } from '../checklist/checklist';
 import { AngularFireDatabase, Observable } from 'angularfire2/database';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'page-home',
