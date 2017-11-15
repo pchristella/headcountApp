@@ -1,7 +1,7 @@
 <ion-header>
    <ion-navbar>
       <ion-title>
-         Checklist
+         {{ dept }}
       </ion-title>
 
       <ion-buttons end>
@@ -18,7 +18,7 @@
 
 <ion-content padding>
    <ion-list>
-      <ion-card
+      <!-- <ion-card
          class="movie"
          text-wrap
          *ngFor="let movie of movies | async">
@@ -63,15 +63,30 @@
                color="danger"
                (click)="deleteMovie(movie)">Delete</button>
          </div>
-      </ion-card>
+      </ion-card> -->
 
       <ion-card
         *ngFor="let staff of staffs | async">
         <ion-item>
            <h2>{{ staff.name }}</h2>
-           <small>{{ staff.dept }} ({{ staff.telno }})</small>
+           <small>{{ staff.dept }} | {{ staff.telno }}</small>
+           <small> {{ staff.present }}</small>
            <p>{{ staff.remark }}</p>
            </ion-item>
+
+           <div class="manage-record" padding>
+              <button
+                 ion-button
+                 text-center
+                 color="primary"
+                 (click)="editStaff(staff)">Update</button>
+
+              <!-- <button
+                 ion-button
+                 text-center
+                 color="danger"
+                 (click)="deleteStaff(staff)">Delete</button> -->
+           </div>
       </ion-card>
    </ion-list>
 

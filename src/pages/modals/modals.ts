@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { IonicPage, NavController, ViewController, NavParams } from 'ionic-angular';
-import { AngularFire, Observable } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'angularfire2/database/observable';
 
 /**
  * Generated class for the ModalsPage page.
@@ -18,15 +19,13 @@ import { AngularFire, Observable } from 'angularfire2';
 export class ModalsPage {
 
 public form          : any;
-public movies        : Observable<any[]>;
-public movieName     : any     = '';
-public movieGenres   : any     = [];
-public movieDuration : any     = '';
-public movieSummary  : any     = '';
-public movieActors   : any     = [];
-public movieYear     : any     = '';
-public movieRating   : any     = '';
-public movieId       : string  = '';
+public staffs        : Observable<any[]>;
+public staffName     : any     = '';
+public staffDept   : any     = [];
+public staffTelno : any     = '';
+public staffPresent   : any     = [];
+public staffRemark     : any     = '';
+public staffId       : string  = '';
 public isEditable    : boolean = false;
 
 
@@ -34,47 +33,45 @@ constructor(
    public navCtrl        : NavController,
    public params         : NavParams,
    private _FB 	        : FormBuilder,
-   private _FIRE         : AngularFire,
+   private _FIRE         : AngularFireDatabase,
    public viewCtrl       : ViewController
 )
 
 {
    this.form 	    = _FB.group({
-      'summary' 	    : ['', Validators.minLength(10)],
-      'year' 	    : ['', Validators.maxLength(4)],
+      'telno' 	    : ['', Validators.minLength(10)],
+      'remark' 	    : ['', Validators.maxLength(100)],
       'name'         : ['', Validators.required],
-      'duration'	    : ['', Validators.required],
-      'rating'	    : ['', Validators.required],
-      'genres' 	    : ['', Validators.required],
-      'actors' 	    : ['', Validators.required]
+      'dept'	    : ['', Validators.required],
+      'present'	    : ['', Validators.required]
    });
 
-   this.movies = this._FIRE.database.list('/films');
+   this.staffs = this._FIRE.list('/staffs');
 
 
    if(params.get('isEdited'))
    {
-       let movie 		= params.get('movie'),
+       let staff 		= params.get('staff'),
            k;
 
-       this.movieName        = movie.title;
-       this.movieDuration	= movie.duration;
-       this.movieSummary     = movie.summary;
-       this.movieRating   	= movie.rating;
-       this.movieYear    	= movie.year;
-       this.movieId          = movie.$key;
+       this.staffName      = staff.name;
+       this.staffDept	     = staff.dept;
+       this.staffTelno     = staff.telno;
+       this.staffPresent   = staff.present;
+       this.staffRemark    = staff.remark;
+       this.staffId        = staff.$key;
 
 
-       for(k in movie.genres)
-       {
-          this.movieGenres.push(movie.genres[k].name);
-       }
-
-
-       for(k in movie.actors)
-       {
-          this.movieActors.push(movie.actors[k].name);
-       }
+       // for(k in staff.dept)
+       // {
+       //    this.staffDept.push(staff.dept[k].name);
+       // }
+       //
+       //
+       // for(k in staff.present)
+       // {
+       //    this.staffPresent.push(staff.present[k].name);
+       // }
 
        this.isEditable      = true;
    }
@@ -82,62 +79,56 @@ constructor(
 
 
 
-saveMovie(val)
+saveStaff(val)
 {
-   let title	    : string	= this.form.controls["name"].value,
-       summary   : string 	= this.form.controls["summary"].value,
-       rating    : number	= this.form.controls["rating"].value,
-       genres    : any       = this.form.controls["genres"].value,
-       actors    : any	    = this.form.controls["actors"].value,
-       duration  : string	= this.form.controls["duration"].value,
-       year      : string	= this.form.controls["year"].value,
-       types     : any       = [],
-       people    : any       = [],
+   let name	    : string	= this.form.controls["name"].value,
+       remark   : string 	= this.form.controls["remark"].value,
+       telno    : number	= this.form.controls["telno"].value,
+       dept    : any       = this.form.controls["dept"].value,
+       present    : any	    = this.form.controls["present"].value,
+       departments     : any       = [],
+       presence    : any       = [],
        k         : any;
 
 
- for(k in genres)
+ for(k in dept)
  {
-    types.push({
-       "name" : genres[k]
+    departments.push({
+       "name" : dept[k]
     });
  }
 
 
- for(k in actors)
+ for(k in present)
  {
-    people.push({
-       "name" : actors[k]
+    presence.push({
+       "name" : present[k]
     });
  }
 
 
 if(this.isEditable)
 {
-   this.movies.update(this.movieId, {
-      title    : title,
-      summary  : summary,
-      rating   : rating,
-      duration : duration,
-      genres   : types,
-      actors   : people,
-      year     : year
+   this.staffs.update(this.staffId, {
+      name    : name,
+      telno   : telno,
+      remark  : remark,
+      dept    : departments,
+      present : presence
    });
 }
 else
 {
-   this.movies.push({
-      title    : title,
-      summary  : summary,
-      rating   : rating,
-      duration : duration,
-      genres   : types,
-      actors   : people,
-      year     : year
+   this.staffs.push({
+     name    : name,
+     telno   : telno,
+     remark  : remark,
+     dept    : departments,
+     present : presence
    });
 }
 
-this.closeModal();
+  this.closeModal();
 }
 
 

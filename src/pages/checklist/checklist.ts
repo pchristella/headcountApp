@@ -25,7 +25,7 @@ export class ChecklistPage {
 
   // staffsRef$: Observable<any[]>;
   // newStaff = '';
-  public movies : Observable<any[]>;
+  //public movies : Observable<any[]>;
   public staffs : Observable<any[]>;
 
   constructor(private af: AngularFireDatabase,
@@ -39,77 +39,79 @@ export class ChecklistPage {
   }
 
   ionViewDidLoad()
-{
-   this.platform.ready()
-   .then(() =>
-   {
-      this.movies = this.af.list('/films').valueChanges();
-      this.staffs = this.af.list('/staffs').valueChanges();
-   });
-}
+  {
+     this.platform.ready()
+     .then(() =>
+     {
+        //this.movies = this.af.list('/films').valueChanges();
+        this.staffs = this.af.list('/staffs').valueChanges();
+     });
+  }
 
 
 
-addRecord()
-{
-   let modal = this.modalCtrl.create('ModalsPage');
-   modal.present();
-}
-//
-//
-//
-// editMovie(movie)
-// {
-//    let params = { movie: movie, isEdited: true },
-//        modal  = this.modalCtrl.create('Modals', params);
-//
-//    modal.present();
-// }
-//
-//
-//
-// deleteMovie(movie : any)
-// {
-//    this.movies.remove(movie);
-// }
+  addRecord()
+  {
+     let modal = this.modalCtrl.create('ModalsPage');
+     modal.present();
+  }
 
-  // addStaff() {
-  //   this.firebaseProvider.addStaff(this.newStaff);
+  // editMovie(movie)
+  // {
+  //    let params = { movie: movie, isEdited: true },
+  //        modal  = this.modalCtrl.create('ModalsPage', params);
+  //
+  //    modal.present();
   // }
   //
-  // removeStaff(id) {
-  //   this.firebaseProvider.removeStaff(id);
+  // deleteMovie(movie : any)
+  // {
+  //    this.movies.remove(movie);
   // }
-  //
+
+  editStaff(staff)
+  {
+     let params = { staff: staff, isEdited: true },
+         modal  = this.modalCtrl.create('ModalsPage', params);
+
+     modal.present();
+  }
+
+  // deleteStaff(staff : any)
+  // {
+  //    this.staffs.remove(staff);
+  // }
+
+
   // summary() {
   //   this.navCtrl.push(SummaryPage);
   // }
   //
-  // showPrompt() {
-  //   let prompt = this.alertCtrl.create({
-  //     title: 'Remark',
-  //     message: "Insert last known location",
-  //     inputs: [
-  //       {
-  //         name: 'remark',
-  //         placeholder: 'Remark'
-  //       },
-  //     ],
-  //     buttons: [
-  //       {
-  //         text: 'Cancel',
-  //         handler: data => {
-  //           console.log('Cancel clicked');
-  //         }
-  //       },
-  //       {
-  //         text: 'Save',
-  //         handler: data => {
-  //           console.log('Saved clicked');
-  //         }
-  //       }
-  //     ]
-  //   });
-  //   prompt.present();
-  // }
+  promptStaff() {
+    let prompt = this.alertCtrl.create({
+      title: 'Remark',
+      message: "Insert last known location",
+      inputs: [
+        {
+          name: 'remark',
+          placeholder: 'Remark'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            console.log('Saved clicked');
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
 }

@@ -12,68 +12,68 @@
    </ion-toolbar>
 </ion-header>
 <ion-content>
-   <form [formGroup]="form" (ngSubmit)="saveMovie(form.value)">
+   <form [formGroup]="form" (ngSubmit)="saveStaff(form.value)">
 
       <ion-item-divider color="light">
          <div *ngIf="!isEditable">
-            Add a new movie
+            Add Contractor/Visitor
          </div>
 
          <div *ngIf="isEditable">
-            Amend this movie
+            Update
          </div>
       </ion-item-divider>
 
 
       <ion-item>
-         <ion-label stacked>Movie name:</ion-label>
+         <ion-label stacked>Name:</ion-label>
          <ion-input
             type="text"
             formControlName="name"
-            [(ngModel)]="movieName"></ion-input>
+            [(ngModel)]="staffName"></ion-input>
       </ion-item>
 
 
 
       <ion-item>
-         <ion-label stacked>Movie length:</ion-label>
+         <ion-label stacked>Phone No:</ion-label>
          <ion-input
             type="text"
-            formControlName="duration"
-            [(ngModel)]="movieDuration"></ion-input>
+            formControlName="telno"
+            [(ngModel)]="staffTelno"></ion-input>
       </ion-item>
 
 
 
       <ion-item>
-         <ion-label stacked>Genre:</ion-label>
+         <ion-label stacked>Department:</ion-label>
          <ion-select
-            formControlName="genres"
-            multiple="true"
-            [(ngModel)]="movieGenres">
-             <ion-option value="Action">Action</ion-option>
-             <ion-option value="Comedy">Comedy</ion-option>
-             <ion-option value="Documentary">Documentary</ion-option>
-             <ion-option value="Historical">Historical</ion-option>
-             <ion-option value="Romance">Romance</ion-option>
-             <ion-option value="Science Fiction">Science Fiction</ion-option>
-             <ion-option value="Thriller">Thriller</ion-option>
-             <ion-option value="Zombie">Zombie</ion-option>
-             <ion-option value="War">War</ion-option>
+            formControlName="dept"
+            multiple="false"
+            [(ngModel)]="staffDept">
+            <ion-option value="PETICT">PET-ICT</ion-option>
+            <ion-option value="FMA">FMA</ion-option>
+            <ion-option value="SECURITY">SECURITY</ion-option>
+            <ion-option value="PLSB">PLSB</ion-option>
+            <ion-option value="HRM">HRM</ion-option>
+            <ion-option value="HSE">HSE</ion-option>
+            <ion-option value="OPI">OPI</ion-option>
+            <ion-option value="TES 5">TES 5</ion-option>
+            <ion-option value="AIN 7">AIN 7</ion-option>
          </ion-select>
       </ion-item>
 
 
 
       <ion-item>
-         <ion-label stacked>Actors/actresses:</ion-label>
+         <ion-label stacked>Present?</ion-label>
          <ion-select
-            formControlName="actors"
-            multiple="true"
-            [(ngModel)]="movieActors">
-             <ion-option value="Keanu Reeves">Keanu Reeves</ion-option>
-             <ion-option value="Ian McShane">Ian McShane</ion-option>
-             <ion-option value="Adrianne Palicki">Adrianne Palicki</ion-option>
+            formControlName="present"
+            multiple="false"
+            [(ngModel)]="staffPresent">
+             <ion-option value="Yes">Yes</ion-option>
+             <ion-option value="No">No</ion-option>
+             <!-- <ion-option value="Adrianne Palicki">Adrianne Palicki</ion-option>
              <ion-option value="Woody Harrelson">Woody Harrelson</ion-option>
              <ion-option value="Willem Dafoe">Willem Dafoe</ion-option>
              <ion-option value="John Leguizamo">John Leguizamo</ion-option>
@@ -93,23 +93,23 @@
              <ion-option value="Verne Troyer">Verne Troyer</ion-option>
              <ion-option value="Robert Wagner">Robert Wagner</ion-option>
              <ion-option value="Rob Lowe">Rob Lowe</ion-option>
-             <ion-option value="Mindy Sterling">Mindy Sterling</ion-option>
+             <ion-option value="Mindy Sterling">Mindy Sterling</ion-option> -->
          </ion-select>
       </ion-item>
 
 
 
-      <ion-item>
+      <!-- <ion-item>
          <ion-label stacked>Summary:</ion-label>
          <ion-textarea
 			rows="6"
             formControlName="summary"
             [(ngModel)]="movieSummary"></ion-textarea>
-      </ion-item>
+      </ion-item> -->
 
 
 
-      <ion-item>
+      <!-- <ion-item>
          <ion-label stacked>Film rating:</ion-label>
          <ion-select
             formControlName="rating"
@@ -122,23 +122,23 @@
              <ion-option value="U">U</ion-option>
              <ion-option value="R18">R18</ion-option>
          </ion-select>
-      </ion-item>
+      </ion-item> -->
 
 
 
       <ion-item>
-         <ion-label stacked>Year released:</ion-label>
+         <ion-label stacked>Remark:</ion-label>
          <ion-input
             type="text"
-            formControlName="year"
-            [(ngModel)]="movieYear"></ion-input>
+            formControlName="remark"
+            [(ngModel)]="staffRemark"></ion-input>
       </ion-item>
 
 
       <ion-item>
          <input
             type="hidden"
-            name="movieId" >
+            name="staffId" >
 
          <button
            ion-button
@@ -147,11 +147,11 @@
            text-center
            [disabled]="!form.valid">
             <div *ngIf="!isEditable">
-               Add a new movie
+               Add Contractor/Visitor
             </div>
 
             <div *ngIf="isEditable">
-               Update this movie
+               Update Presence/Remark
             </div>
          </button>
       </ion-item>

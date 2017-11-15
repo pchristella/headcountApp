@@ -16,8 +16,8 @@
     <ion-list>
       <ion-item>
         <ion-label>Department</ion-label>
-        <ion-select [(ngModel)]="departments" cancelText="Cancel" okText="Okay">
-          <ion-option value="petict" selected="true">PET-ICT</ion-option>
+        <ion-select [(ngModel)]="dept" (ionChange)="pickDept(dept)" cancelText="Cancel" okText="Okay">
+          <ion-option value="petict">PET-ICT</ion-option>
           <ion-option value="fma">FMA</ion-option>
           <ion-option value="sec">SECURITY</ion-option>
           <ion-option value="plsb">PLSB</ion-option>
@@ -29,8 +29,17 @@
         </ion-select>
       </ion-item>
     </ion-list>
-    <button ion-button round (click)="nextpage()">Enter</button>
+    <button ion-button round (click)="nextpage(dept)">Enter</button>
   </ion-card-content>
+</ion-card>
+
+<ion-card
+  *ngFor="let staff of staffs | async">
+  <ion-item>
+     <h2>{{ staff.name }}</h2>
+     <small>{{ staff.dept }} ({{ staff.telno }})</small>
+     <p>{{ staff.remark }}</p>
+     </ion-item>
 </ion-card>
 
 
