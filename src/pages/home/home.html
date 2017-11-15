@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Headcount Checklist
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+  <img src="http://http://localhost:8100/img/icon.png"/>
+  <ion-card-content>
+    <ion-card-title>
+      Select Department
+      </ion-card-title>
+    <ion-list>
+      <ion-item>
+        <ion-label>Department</ion-label>
+        <ion-select [(ngModel)]="departments" cancelText="Cancel" okText="Okay">
+          <ion-option value="petict" selected="true">PET-ICT</ion-option>
+          <ion-option value="fma">FMA</ion-option>
+          <ion-option value="sec">SECURITY</ion-option>
+          <ion-option value="plsb">PLSB</ion-option>
+          <ion-option value="hrm">HRM</ion-option>
+          <ion-option value="hse">HSE</ion-option>
+          <ion-option value="opi">OPI</ion-option>
+          <ion-option value="tes5">TES 5</ion-option>
+          <ion-option value="ain7">AIN 7</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <button ion-button round (click)="nextpage()">Enter</button>
+  </ion-card-content>
+</ion-card>
+
+
+
+</ion-content>
