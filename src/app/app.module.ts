@@ -13,6 +13,7 @@ import { ChecklistPage } from '../pages/checklist/checklist';
 
 import { AngularFireDatabase, AngularFireDatabaseModule, Observable } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
+import { Observable } from 'rxjs/Observable';
 //import { FirebaseProvider } from '../providers/firebase/firebase';
 
 // export const firebaseConfig = {

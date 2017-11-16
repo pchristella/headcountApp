@@ -18,63 +18,16 @@
 
 <ion-content padding>
    <ion-list>
-      <!-- <ion-card
-         class="movie"
-         text-wrap
-         *ngFor="let movie of movies | async">
-         <ion-item>
-            <h2>{{ movie.title }}</h2>
-            <small>{{ movie.date }} ({{ movie.duration }})</small>
-            <p>{{ movie.summary }}</p>
-
-
-            <section class="multiples">
-               <h3>Actors/Actresses</h3>
-	       <ion-chip
-                *ngFor="let actor of movie.actors"
-                padding-left
-                padding-right
-                margin-right>{{ actor.name }}</ion-chip>
-            </section>
-
-
-            <section class="multiples">
-               <h3>Genres</h3>
-               <ion-chip
-                  *ngFor="let genre of movie.genres"
-                  padding-left
-                  padding-right
-                  margin-right>{{ genre.name }}</ion-chip>
-            </section>
-
-         </ion-item>
-
-
-         <div class="manage-record" padding>
-            <button
-               ion-button
-               text-center
-               color="primary"
-               (click)="editMovie(movie)">Edit</button>
-
-            <button
-               ion-button
-               text-center
-               color="danger"
-               (click)="deleteMovie(movie)">Delete</button>
-         </div>
-      </ion-card> -->
-
       <ion-card
         *ngFor="let staff of staffs | async">
         <ion-item>
-          <ion-checkbox [(ngModel)]="staff.present" (ionChange)="isPresent(staff)"></ion-checkbox>
+          <ion-checkbox [(ngModel)]="staff.present"></ion-checkbox>
           <ion-label>{{ staff.name }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Remark: </ion-label>
           <ion-label>{{ staff.remark }}</ion-label>
-           <!-- <h2>{{ staff.name }}</h2> -->
-           <!-- <small> {{ staff.present }}</small>
-           <p>{{ staff.remark }}</p> -->
-           </ion-item>
+        </ion-item>
 
            <div class="manage-record" padding>
               <button
@@ -82,12 +35,6 @@
                  text-center
                  color="primary"
                  (click)="editStaff(staff)">Update</button>
-
-              <!-- <button
-                 ion-button
-                 text-center
-                 color="danger"
-                 (click)="deleteStaff(staff)">Delete</button> -->
            </div>
       </ion-card>
    </ion-list>
