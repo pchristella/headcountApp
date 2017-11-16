@@ -37,8 +37,8 @@ constructor(
 
 {
    this.form 	    = _FB.group({
-      'remark' 	    : ['', Validators.maxLength(100)],
-      'name'         : ['', Validators.required],
+      'remark' 	    : [''],
+      'name'         : [''],
       'present'	    : ['']
    });
 
@@ -47,7 +47,7 @@ constructor(
 
    if(params.get('isEdited'))
    {
-       let staff 		= params.get('staff'),
+       let staff 		= params.get('staff')
 
        this.staffName      = staff.name;
        this.staffPresent   = staff.present;

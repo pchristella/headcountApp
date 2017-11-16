@@ -10,16 +10,16 @@ import 'rxjs/add/operator/map';
 })
 export class HomePage {
 
-  public staffs : Observable<any[]>;
+  //public departments : Observable<any[]>;
 
   constructor(public navCtrl: NavController, private af: AngularFireDatabase) {
     //this.staffs = this.af.list('/staffs').valueChanges();
   }
 
-  pickDept(dept: string) {
-    this.staffs = this.af.list('staffs',
-    ref => ref.orderByChild('dept').equalTo(dept)).valueChanges();
-  }
+  // pickDept(dept: string) {
+  //   this.departments = this.af.list('departments',
+  //   ref => ref.orderByChild('dept').equalTo(dept)).valueChanges();
+  // }
 
   nextpage() {
     this.navCtrl.push(ChecklistPage);

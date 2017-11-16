@@ -8,29 +8,19 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ChecklistPage } from '../pages/checklist/checklist';
-//import { SummaryPage } from '../pages/summary/summary';
+import { SummaryPage } from '../pages/summary/summary';
 
 
 import { AngularFireDatabase, AngularFireDatabaseModule, Observable } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { Observable } from 'rxjs/Observable';
-//import { FirebaseProvider } from '../providers/firebase/firebase';
-
-// export const firebaseConfig = {
-//   apiKey: "AIzaSyBRVDn_sqHocknO4nSF2Pfy6VDjnOvGn3s",
-//   authDomain: "checklist-01.firebaseapp.com",
-//   databaseURL: "https://checklist-01.firebaseio.com",
-//   projectId: "checklist-01",
-//   storageBucket: "checklist-01.appspot.com",
-//   messagingSenderId: "887356109663"
-//   };
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ChecklistPage,
-    //SummaryPage
+    SummaryPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +41,7 @@ import { Observable } from 'rxjs/Observable';
     MyApp,
     HomePage,
     ChecklistPage,
-    //SummaryPage
+    SummaryPage
   ],
   providers: [
     StatusBar,

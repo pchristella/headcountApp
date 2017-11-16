@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, Platform } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-
+import { SummaryPage } from '../summary/summary';
 import { AngularFireDatabase, Observable } from 'angularfire2/database';
 import 'rxjs/add/operator/map';
 /**
@@ -26,6 +26,7 @@ export class ChecklistPage {
               public alertCtrl: AlertController,
               private modalCtrl : ModalController,
               private platform  : Platform) {
+
   }
 
   ionViewDidLoad()
@@ -50,4 +51,9 @@ export class ChecklistPage {
 
      modal.present();
   }
+
+  nextpage() {
+    this.navCtrl.push(SummaryPage);
+  }
+
 }
